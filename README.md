@@ -10,6 +10,8 @@ Copy file globs, watching for changes.
 
 This module provides a CLI tool like `cp`, but with watching.
 
+> This is the same as `cpx` but with `--includeHidden`
+
 
 ## Installation
 
@@ -107,6 +109,7 @@ cpx.copy(source, dest, callback)
   - **options.clean** `{boolean}` -- The flag to remove files that copied on past before copy. Default: `false`.
   - **options.dereference** `{boolean}` -- The flag to follow symbolic links when copying from them. Default: `false`.
   - **options.includeEmptyDirs** `{boolean}` -- The flag to copy empty directories which is matched with the glob. Default: `false`.
+  - **options.includeHidden** `{boolean}` -- The flag to copy dot files which is matched with the glob. Default: `false`.
   - **options.initialCopy** `{boolean}` -- The flag to not copy at the initial time of watch. This is for `cpx.watch()`. Default: `true`.
   - **options.preserve** `{boolean}` -- The flag to copy uid, gid, atime, and mtime of files. Default: `false`.
   - **options.transform** `{((filepath: string) => stream.Transform)[]}` -- Functions that creates a `stream.Transform` object to transform each copying file.
