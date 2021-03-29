@@ -18,10 +18,10 @@
     "coverage": "nyc report -r lcov && opener coverage/lcov-report/index.html",
     "lint": "eslint bin lib test",
     "postversion": "git push && git push --tags",
-    "pretest": "npm run -s lint",
-    "preversion": "npm test",
-    "test": "nyc --require babel-register npm run -s _mocha",
-    "watch": "npm run -s _mocha -- --require babel-register --watch --growl"
+    "pretest": "yarn -s lint",
+    "preversion": "yarn test",
+    "test": "nyc --require babel-register yarn -s _mocha",
+    "watch": "yarn -s _mocha -- --require babel-register --watch --growl"
   },
   "dependencies": {
     "co": "^4.6.0",
