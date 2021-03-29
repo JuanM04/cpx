@@ -32,6 +32,8 @@ Options:
     -h, --help                Print usage information.
     --include-empty-dirs      The flag to copy empty directories which is
                               matched with the glob.
+    --include-hidden          The flag to copy dot files which is matched
+                              with the glob.
     --no-initial              The flag to not copy at the initial time of watch.
                               Use together '--watch' option.
     -p, --preserve            The flag to copy attributes of files.
