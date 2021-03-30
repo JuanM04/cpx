@@ -2,6 +2,8 @@ root: true
 extends:
   - plugin:@mysticatea/es2015
   - plugin:@mysticatea/+node
+rules:
+  require-unicode-regexp: off
 
 overrides:
   - files: "bin/*.js"

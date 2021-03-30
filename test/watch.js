@@ -44,7 +44,7 @@ describe("The watch method", () => {
                 command.stdin.write("KILL")
                 yield pEvent(command, "exit")
                 yield teardownTestDir("test-ws")
-                command = null
+                command = null // eslint-disable-line require-atomic-updates
             } else {
                 yield teardownTestDir("test-ws")
             }
