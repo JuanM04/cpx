@@ -10,7 +10,7 @@ Copy file globs, watching for changes.
 
 This module provides a CLI tool like `cp`, but with watching.
 
-> This is the same as `cpx` but with `--include-hidden`
+> This is the same as `cpx`, but with `--include-hidden` and updated dependencies
 
 
 ## Installation
@@ -19,7 +19,7 @@ This module provides a CLI tool like `cp`, but with watching.
 npm install @juanm04/cpx
 ```
 
-- Requires Node.js `>=6.5`.
+- Requires Node.js `>=10`.
 
 ## Usage
 
