@@ -1,6 +1,6 @@
 {
   "name": "@juanm04/cpx",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Copy file globs, watching for changes.",
   "engines": {
     "node": ">=6.5"
@@ -54,7 +54,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mysticatea/cpx.git"
+    "url": "https://github.com/JuanM04/cpx.git"
   },
   "keywords": [
     "cp",
@@ -75,7 +75,7 @@
   "author": "Toru Nagashima",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mysticatea/cpx/issues"
+    "url": "https://github.com/JuanM04/cpx/issues"
   },
-  "homepage": "https://github.com/mysticatea/cpx"
+  "homepage": "https://github.com/JuanM04/cpx"
 }

@@ -172,11 +172,10 @@ I would especially thank for document corrections since I'm not familiar with En
 
 Please use GitHub Pull Requests.
 
-There are some npm-scripts to help developments.
+There are some yarn-scripts to help developments.
 
-- `npm test` - Run tests and collect coverage.
-- `npm run build` - Make lib directory from src directory.
-- `npm run clean` - Delete directories (folders) which are created by other commands.
-- `npm run lint` - Run ESLint.
-- `npm run watch` - Run tests (not collect coverage) when each file was modified.
-- `npm run open-coverage` - Open the coverage report of the last `npm test` command with web browser.
+- `yarn test` - Run tests and collect coverage.
+- `yarn lint` - Run ESLint.
+- `yarn watch` - Run tests (not collect coverage) when each file was modified.
+- `yarn coverage` - Open the coverage report of the last `yarn test` command with web browser.
+- `yarn publish --access public` - Publish to NPM.
