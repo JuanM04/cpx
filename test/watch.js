@@ -686,6 +686,104 @@ describe("The watch method", () => {
         )
     })
 
+    describe("should copy it when an dot file is added when '--include-hidden' option was given:", () => {
+        beforeEach(() =>
+            setupTestDir({
+                "test-ws/a/hello.txt": "Hello",
+            })
+        )
+
+        /**
+         * Verify.
+         * @returns {void}
+         */
+        function verifyFiles() {
+            return verifyTestDir({
+                "test-ws/b/hello.txt": "Hello",
+                "test-ws/b/.hidden/test.txt": "Inside hidden",
+                "test-ws/b/.secret.txt": "Secret",
+            })
+        }
+
+        it(
+            "lib version.",
+            co.wrap(function*() {
+                watcher = cpx.watch("test-ws/a/**", "test-ws/b", {
+                    includeHidden: true,
+                })
+                yield waitForReady()
+                yield writeFile("test-ws/a/.hidden/test.txt", "Inside hidden")
+                yield writeFile("test-ws/a/.secret.txt", "Secret")
+                yield waitForCopy()
+                yield verifyFiles()
+            })
+        )
+
+        it(
+            "command version.",
+            co.wrap(function*() {
+                command = execCommand(
+                    '"test-ws/a/**" test-ws/b --include-hidden --watch --verbose'
+                )
+                yield waitForReady()
+                yield writeFile("test-ws/a/.hidden/test.txt", "Inside hidden")
+                yield writeFile("test-ws/a/.secret.txt", "Secret")
+                yield waitForCopy()
+                yield verifyFiles()
+            })
+        )
+    })
+
+    describe("should remove it on destination when an dot file is removed when '--include-hidden' option was given:", () => {
+        beforeEach(() =>
+            setupTestDir({
+                "test-ws/a/hello.txt": "Hello",
+                "test-ws/a/.hidden/test.txt": "Inside hidden",
+                "test-ws/a/.secret.txt": "Secret",
+            })
+        )
+
+        /**
+         * Verify.
+         * @returns {void}
+         */
+        function verifyFiles() {
+            return verifyTestDir({
+                "test-ws/b/hello.txt": "Hello",
+                "test-ws/b/.hidden": null,
+                "test-ws/b/.secret.txt": null,
+            })
+        }
+
+        it(
+            "lib version.",
+            co.wrap(function*() {
+                watcher = cpx.watch("test-ws/a/**", "test-ws/b", {
+                    includeHidden: true,
+                })
+                yield waitForReady()
+                yield remove("test-ws/a/.hidden")
+                yield removeFile("test-ws/a/.secret.txt")
+                yield waitForCopy()
+                yield verifyFiles()
+            })
+        )
+
+        it(
+            "command version.",
+            co.wrap(function*() {
+                command = execCommand(
+                    '"test-ws/a/**" test-ws/b --include-hidden --watch --verbose'
+                )
+                yield waitForReady()
+                yield remove("test-ws/a/.hidden")
+                yield removeFile("test-ws/a/.secret.txt")
+                yield waitForCopy()
+                yield verifyFiles()
+            })
+        )
+    })
+
     describe("should copy it when a file is added even if '--no-initial' option was given:", () => {
         beforeEach(() =>
             setupTestDir({

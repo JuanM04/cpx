@@ -320,6 +320,92 @@ describe("The copy method", () => {
         })
     })
 
+    describe("should copy specified dot files with globs when `--include-hidden` option was given:", () => {
+        beforeEach(() =>
+            setupTestDir({
+                "test-ws/a/hello.txt": "Hello",
+                "test-ws/a/.hidden/test.txt": "Inside hidden",
+                "test-ws/a/.secret.txt": "Secret",
+            })
+        )
+        afterEach(() => teardownTestDir("test-ws"))
+
+        /**
+         * Verify.
+         * @returns {void}
+         */
+        function verifyFiles() {
+            return verifyTestDir({
+                "test-ws/a/hello.txt": "Hello",
+                "test-ws/a/.hidden/test.txt": "Inside hidden",
+                "test-ws/a/.secret.txt": "Secret",
+                "test-ws/b/hello.txt": "Hello",
+                "test-ws/b/.hidden/test.txt": "Inside hidden",
+                "test-ws/b/.secret.txt": "Secret",
+            })
+        }
+
+        it("lib async version.", done => {
+            cpx.copy("test-ws/a/**", "test-ws/b", { includeHidden: true }, () =>
+                verifyFiles().then(() => done(), done)
+            )
+        })
+
+        it("lib sync version.", () => {
+            cpx.copySync("test-ws/a/**", "test-ws/b", {
+                includeHidden: true,
+            })
+            return verifyFiles()
+        })
+
+        it("command version.", () => {
+            execCommandSync('"test-ws/a/**" test-ws/b --include-hidden')
+            return verifyFiles()
+        })
+    })
+
+    describe("should not copy specified dot files with globs when `--include-hidden` option was not given:", () => {
+        beforeEach(() =>
+            setupTestDir({
+                "test-ws/a/hello.txt": "Hello",
+                "test-ws/a/.hidden/test.txt": "Inside hidden",
+                "test-ws/a/.secret.txt": "Secret",
+            })
+        )
+        afterEach(() => teardownTestDir("test-ws"))
+
+        /**
+         * Verify.
+         * @returns {void}
+         */
+        function verifyFiles() {
+            return verifyTestDir({
+                "test-ws/a/hello.txt": "Hello",
+                "test-ws/a/.hidden/test.txt": "Inside hidden",
+                "test-ws/a/.secret.txt": "Secret",
+                "test-ws/b/hello.txt": "Hello",
+                "test-ws/b/.hidden": null,
+                "test-ws/b/.secret.txt": null,
+            })
+        }
+
+        it("lib async version.", done => {
+            cpx.copy("test-ws/a/**", "test-ws/b", () =>
+                verifyFiles().then(() => done(), done)
+            )
+        })
+
+        it("lib sync version.", () => {
+            cpx.copySync("test-ws/a/**", "test-ws/b")
+            return verifyFiles()
+        })
+
+        it("command version.", () => {
+            execCommandSync('"test-ws/a/**" test-ws/b')
+            return verifyFiles()
+        })
+    })
+
     describe("should copy specified files with globs when `--preserve` option was given:", () => {
         beforeEach(() =>
             setupTestDir({
