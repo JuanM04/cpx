@@ -1,22 +1,22 @@
 # cpx
 
-[![npm version](https://img.shields.io/npm/v/cpx.svg)](https://www.npmjs.com/package/cpx)
-[![Downloads/month](https://img.shields.io/npm/dm/cpx.svg)](http://www.npmtrends.com/cpx)
-[![Build Status](https://travis-ci.org/mysticatea/cpx.svg?branch=master)](https://travis-ci.org/mysticatea/cpx)
-[![codecov](https://codecov.io/gh/mysticatea/cpx/branch/master/graph/badge.svg)](https://codecov.io/gh/mysticatea/cpx)
-[![Dependency Status](https://david-dm.org/mysticatea/cpx.svg)](https://david-dm.org/mysticatea/cpx)
+[![npm version](https://img.shields.io/npm/v/@juanm04/cpx.svg)](https://www.npmjs.com/package/@juanm04/cpx)
+[![Downloads/month](https://img.shields.io/npm/dm/@juanm04/cpx.svg)](http://www.npmtrends.com/@juanm04/cpx)
+[![Build Status](https://travis-ci.org/juanm04/cpx.svg?branch=master)](https://travis-ci.org/juanm04/cpx)
+[![codecov](https://codecov.io/gh/juanm04/cpx/branch/master/graph/badge.svg)](https://codecov.io/gh/juanm04/cpx)
+[![Dependency Status](https://david-dm.org/juanm04/cpx.svg)](https://david-dm.org/juanm04/cpx)
 
 Copy file globs, watching for changes.
 
 This module provides a CLI tool like `cp`, but with watching.
 
-> This is the same as `cpx` but with `--includeH-hidden`
+> This is the same as `cpx` but with `--include-hidden`
 
 
 ## Installation
 
 ```
-npm install cpx
+npm install @juanm04/cpx
 ```
 
 - Requires Node.js `>=6.5`.
